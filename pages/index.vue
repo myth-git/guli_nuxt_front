@@ -3,38 +3,27 @@
     <!-- 幻灯片 开始 -->
     <div v-swiper:mySwiper="swiperOption">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background: #040b1b">
-          <a target="_blank" href="/">
-            <img
-              src="~/assets/photo/banner/1525939573202.jpg"
-              alt="首页banner"
-            />
-          </a>
-        </div>
-
-        <div class="swiper-slide" style="background: #040b1b">
-          <a target="_blank" href="/">
-            <img
-              src="~/assets/photo/banner/153525d0ef15459596.jpg"
-              alt="首页banner"
-            />
+        <div
+          v-for="banner in bannerList"
+          :key="banner.id"
+          class="swiper-slide"
+          style="background: #040b1b"
+        >
+          <a target="_blank" :href="banner.linkUrl">
+            <img :src="banner.imageUrl" :alt="banner.title" />
           </a>
         </div>
       </div>
-
       <div class="swiper-pagination swiper-pagination-white"></div>
-
       <div
         class="swiper-button-prev swiper-button-white"
         slot="button-prev"
       ></div>
-
       <div
         class="swiper-button-next swiper-button-white"
         slot="button-next"
       ></div>
     </div>
-
     <!-- 幻灯片 结束 -->
 
     <div id="aCoursesList">
@@ -83,9 +72,7 @@
 
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">9634人学习</i>
-
                         |
-
                         <i class="c-999 f-fA">9634评论</i>
                       </span>
                     </section>
@@ -547,6 +534,7 @@
 
 
 <script>
+import banner from "@/api/banner";
 export default {
   data() {
     return {
@@ -565,7 +553,21 @@ export default {
           prevEl: ".swiper-button-prev", //前一页dom节点
         },
       },
+      //banner数组
+      bannerList: [],
     };
+  },
+  created() {
+    //调用查询banner的方法
+    this.getBannerList();
+  },
+  methods: {
+    //查询banner数据
+    getBannerList() {
+      banner.getListBanner().then((response) => {
+        this.bannerList = response.data.data.list;
+      });
+    },
   },
 };
 </script>
