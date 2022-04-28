@@ -28,13 +28,17 @@
               <li v-for="teacher in data.items" :key="teacher.id">
                 <section class="i-teach-wrap">
                   <div class="i-teach-pic">
-                    <a href="/teacher/1" :title="teacher.name" target="_blank">
+                    <a
+                      :href="'/teacher/' + teacher.id"
+                      :title="teacher.name"
+                      target="_blank"
+                    >
                       <img :src="teacher.avatar" :alt="teacher.name" />
                     </a>
                   </div>
                   <div class="mt10 hLh30 txtOf tac">
                     <a
-                      href="/teacher/1"
+                      :href="'/teacher/' + teacher.id"
                       :title="teacher.name"
                       target="_blank"
                       class="fsize18 c-666"
