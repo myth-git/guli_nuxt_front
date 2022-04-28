@@ -116,7 +116,7 @@
                     />
                     <div class="cc-mask">
                       <a
-                        href="/course/1"
+                        :href="'/course/' + item.id"
                         title="开始学习"
                         class="comm-btn c-btn-1"
                         >开始学习</a
@@ -125,7 +125,7 @@
                   </section>
                   <h3 class="hLh30 txtOf mt10">
                     <a
-                      href="/course/1"
+                      :href="'/course/' + item.id"
                       title="听力口语"
                       class="course-title fsize18 c-333"
                       >{{ item.title }}</a
