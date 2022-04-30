@@ -15,4 +15,20 @@ export default {
             method: 'get'
         })
     },
+    //生成二维码的方法
+    createNatvie(orderNo) {
+        return request({
+            url: '/eduorder/paylog/createNative/' + orderNo,
+            method: 'get'
+        })
+    },
+
+    //查询订单状态的方法
+    //生成二维码的方法
+    queryPayStatus(orderNo) {
+        return request({
+            url: '/eduorder/paylog/queryPayStatus/' + orderNo,
+            method: 'get'
+        })
+    }
 }
